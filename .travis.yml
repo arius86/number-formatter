@@ -1,0 +1,21 @@
+language: php
+
+php:
+  - 5.3
+  - 5.4
+  - 5.5
+
+services:
+  - intl
+
+before_script:
+  - phpenv config-add travis/php.ini
+  - curl -s http://getcomposer.org/installer | php
+  - php composer.phar install --dev
+
+script:
+  - mkdir -p build/logs
+  - php vendor/bin/phpunit -c travis/phpunit.xml.dist
+
+after_script:
+  - php vendor/bin/coveralls -v
