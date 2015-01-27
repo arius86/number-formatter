@@ -8,10 +8,9 @@ Additional supported ordinals
 
 1. Polish (pl)
 --------------
-- spellout-ordinal-femine
-- spellout-ordinal-maskuline
 
-2. Russian (ru)
----------------
+- spellout-ordinal
 - spellout-ordinal-femine
-- spellout-ordinal-maskuline
+- spellout-ordinal-masculine
+
+

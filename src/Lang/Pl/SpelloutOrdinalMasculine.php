@@ -127,7 +127,7 @@ class SpelloutOrdinalMasculine implements SpelloutInterface
     }
 
     /**
-     * jeżeli dwie ostatnie cyfry są różn od zera, reszta pozostaje w cardinal
+     * jeżeli dwie ostatnie cyfry są różne od zera, reszta pozostaje w cardinal
      * jeżeli pierwsza i druga cyfra to zero, to szukamy następnej niezerowej cyfry
      * może to być wtedy numer setny, trzechsetny, tysięczny, trzytysięczny, dziewięćdziesięciodziewięciotysięczny
      * trzystutysięczny, trzystuosiemdziesięciosześciotysięczny, milionowy, ...
