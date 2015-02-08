@@ -38,7 +38,7 @@ Additional supported ordinals
 --------------
 
 - spellout-ordinal
-- spellout-ordinal-femine
+- spellout-ordinal-feminine
 - spellout-ordinal-masculine
 
 
