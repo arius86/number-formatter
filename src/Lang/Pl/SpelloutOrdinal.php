@@ -140,7 +140,7 @@ class SpelloutOrdinal implements SpelloutInterface
         $ordinal = $this->prepareComplex($number);
         $cardinal = $this->cardinal;
 
-        if ($numberLength > 3 && $cardinal[0] === 'jeden') {
+        if ($numberLength > 3 && in_array($cardinal[0], ['jeden','jedna'])) {
             unset($cardinal[0]);
         }
 
