@@ -13,7 +13,7 @@ namespace Arius\Lang\Pl;
 
 class SpelloutOrdinalFemine extends SpelloutOrdinal
 {
-    protected $simple = array(
+    protected $simple = [
         0 => "zerowa",
         1 => "pierwsza" ,
         2 => "druga",
@@ -42,9 +42,9 @@ class SpelloutOrdinalFemine extends SpelloutOrdinal
         70 => "siedemdziesiąta",
         80 => "osiemdziesiąta",
         90 => "dziewięćdziesiąta"
-    );
+    ];
 
-    protected $zeroes = array(
+    protected $zeroes = [
         2 => "setna",
         3 => "tysięczna",
         4 => "tysięczna",
@@ -58,5 +58,5 @@ class SpelloutOrdinalFemine extends SpelloutOrdinal
         12 => "bilionowa",
         13 => "bilionowa",
         14 => "bilionowa"
-    );
+    ];
 }

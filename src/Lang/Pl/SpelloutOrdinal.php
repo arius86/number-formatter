@@ -18,7 +18,7 @@ class SpelloutOrdinal implements SpelloutInterface
 {
     use SpelloutTrait;
 
-    protected $simple = array(
+    protected $simple = [
         0 => "zerowe",
         1 => "pierwsze" ,
         2 => "drugie",
@@ -47,9 +47,9 @@ class SpelloutOrdinal implements SpelloutInterface
         70 => "siedemdziesiąte",
         80 => "osiemdziesiąte",
         90 => "dziewięćdziesiąte"
-    );
+    ];
 
-    protected $complex = array(
+    protected $complex = [
         1 => "jedno",
         2 => "dwu",
         3 => "trzy",
@@ -86,17 +86,17 @@ class SpelloutOrdinal implements SpelloutInterface
         700 => "siedemset",
         800 => "osiemset",
         900 => "dziewięćset"
-    );
+    ];
 
-    protected $zeroes = array(
+    protected $zeroes = [
         2 => "setne",
         3 => "tysięczne",
         6 => "milionowe",
         9 => "miliardowe",
         12 => "bilionowe",
-    );
+    ];
 
-    protected $hundredsPrefixes = array(
+    protected $hundredsPrefixes = [
         1 => "",
         2 => "dwu",
         3 => "trzech",
@@ -106,7 +106,7 @@ class SpelloutOrdinal implements SpelloutInterface
         7 => "siedem",
         8 => "osiem",
         9 => "dziewięć"
-    );
+    ];
 
     protected $cardinal;
     protected $complexSuffix = '';
@@ -166,11 +166,11 @@ class SpelloutOrdinal implements SpelloutInterface
         }
 
         if ($number == 1) {
-            return array($this->complexSuffix);
+            return [$this->complexSuffix];
         }
 
         if ($number < 20) {
-            return array($this->complex[$number].$this->complexSuffix);
+            return [$this->complex[$number].$this->complexSuffix];
         }
 
         // try to get last two digits
@@ -178,7 +178,7 @@ class SpelloutOrdinal implements SpelloutInterface
         $lastTwoDigits = substr($number, -2, 2);
 
         if (isset($this->simple[$lastTwoDigits])) {
-            $ordinal = array($modeArray[$lastTwoDigits].$this->complexSuffix);
+            $ordinal = [$modeArray[$lastTwoDigits].$this->complexSuffix];
         } else {
             $ordinal = $this->loopByDigits($number, $mode);
         }
@@ -190,7 +190,7 @@ class SpelloutOrdinal implements SpelloutInterface
     {
         $modeArray = $this->$mode;
         $numberLength = strlen($number);
-        $ordinal = array();
+        $ordinal = [];
         $multiplier = 1;
         $zeroesNb = 0;
 

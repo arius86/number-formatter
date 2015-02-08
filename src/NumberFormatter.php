@@ -16,7 +16,7 @@ class NumberFormatter extends \NumberFormatter
     /**
      * @var array
      */
-    private $attributes = array();
+    private $attributes = [];
 
     /**
      * @var bool
