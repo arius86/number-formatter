@@ -11,14 +11,9 @@
  */
 namespace Arius\Lang\Pl;
 
-use Arius\SpelloutInterface;
-use Arius\SpelloutTrait;
-
-class SpelloutOrdinalMasculine implements SpelloutInterface
+class SpelloutOrdinalMasculine extends SpelloutOrdinal
 {
-    use SpelloutTrait;
-
-    protected $ones = array(
+    protected $simple = array(
         0 => "zerowy",
         1 => "pierwszy" ,
         2 => "drugi",
@@ -38,14 +33,7 @@ class SpelloutOrdinalMasculine implements SpelloutInterface
         16 => "szesnasty",
         17 => "siedemnasty",
         18 => "osiemnasty",
-        19 => "dziewiętnasty"
-    );
-
-    /**
-     * changed this from keys 3,4,5 etc. need to test
-     * @var array
-     */
-    protected $tens = array(
+        19 => "dziewiętnasty",
         20 => "dwudziesty",
         30 => "trzydziesty",
         40 => "czterdziesty",
@@ -56,83 +44,19 @@ class SpelloutOrdinalMasculine implements SpelloutInterface
         90 => "dziewięćdziesiąty"
     );
 
-    protected $digits = array(
-        100 => "setny",
-        1000 => "tysięczny",
-        1000000 => "milionowy",
-        1000000000 => "miliardowy",
-        //12 => "biliardowy",
-        //15 => "trylionowy"
+    protected $zeroes = array(
+        2 => "setny",
+        3 => "tysięczny",
+        4 => "tysięczny",
+        5 => "tysięczny",
+        6 => "milionowy",
+        7 => "milionowy",
+        8 => "milionowy",
+        9 => "miliardowy",
+        10 => "miliardowy",
+        11 => "miliardowy",
+        12 => "bilionowy",
+        13 => "bilionowy",
+        14 => "bilionowy"
     );
-
-    protected $prefixes = array(
-        1 => array(
-            2 => "dwu",
-            3 => "trzech",
-            4 => "czterech",
-            5 => "pięć",
-            6 => "sześć",
-            7 => "siedem",
-            8 => "osiem",
-            9 => "dziewięć"
-        ),
-        2 => array(
-            1 => "jedno",
-            2 => "dwu",
-            3 => "trzy",
-            4 => "cztero",
-            5 => "pięcio",
-            6 => "sześcio",
-            7 => "siedmio",
-            8 => "ośmio",
-            9 => "dziewięcio",
-            10 => "dziesięcio",
-            11 => "jedenasto",
-            12 => "dwunasto",
-            13 => "trzynasto",
-            14 => "czternasto",
-            15 => "piętnasto",
-            16 => "szesnasto",
-            17 => "siedemnasto",
-            18 => "osiemnasto",
-            19 => "dziewiętnasto"
-        )
-    );
-
-    /**
-     * @inheritdoc
-     */
-    public function format($number)
-    {
-        $cardinal = explode(' ', $this->getCardinal($number));
-        $ordinal = array();
-
-        if (count($cardinal) == 1 && $number < 20) {
-            return $this->ones[$number];
-        }
-
-        $lastDigit = (int)substr($number,-1);
-
-        $secondLastDigit = (int)substr($number,-2, 1);
-
-        if ($secondLastDigit != 0) {
-            $ordinal[] = $this->tens[$secondLastDigit];
-        }
-
-        if ($lastDigit != 0) {
-            $ordinal[] = $this->ones[$lastDigit];
-        }
-
-        return implode(' ', $ordinal);
-    }
-
-    /**
-     * jeżeli dwie ostatnie cyfry są różne od zera, reszta pozostaje w cardinal
-     * jeżeli pierwsza i druga cyfra to zero, to szukamy następnej niezerowej cyfry
-     * może to być wtedy numer setny, trzechsetny, tysięczny, trzytysięczny, dziewięćdziesięciodziewięciotysięczny
-     * trzystutysięczny, trzystuosiemdziesięciosześciotysięczny, milionowy, ...
-     * ogólnie grupa setek traktowana będzie osobno
-     * potem tysiące, miliony, miliardy itd. mają takie same przedrostki w ramach grupy
-     * /
-     */
 }

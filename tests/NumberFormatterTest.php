@@ -44,6 +44,6 @@ class NumberFormatterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(0, $this->myFormatter->getErrorCode());
 
         $this->assertEquals('%spellout-numbering', $this->orginalFormatter->getTextAttribute(NumberFormatter::DEFAULT_RULESET));
-        $this->assertEquals('%spellout-ordinal-masculine', $this->myFormatter->getTextAttribute(NumberFormatter::DEFAULT_RULESET));
+        $this->assertEquals('%spellout-ordinal', $this->myFormatter->getTextAttribute(NumberFormatter::DEFAULT_RULESET));
     }
 }

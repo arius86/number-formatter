@@ -38,13 +38,25 @@ class SpelloutOrdinalMasculineTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('setny', $f->format(100));
         $this->assertEquals('sto drugi', $f->format(102));
         $this->assertEquals('dwieście trzydziesty czwarty', $f->format(234));
+        $this->assertEquals('trzechsetny', $f->format(300));
+        $this->assertEquals('osiemset dwudziesty', $f->format(820));
 
         $this->assertEquals('tysięczny', $f->format(1000));
         $this->assertEquals('tysiąc czterysta dziesiąty', $f->format(1410));
         $this->assertEquals('dwa tysiące jedenasty', $f->format(2011));
         $this->assertEquals('trzy tysiące setny', $f->format(3100));
         $this->assertEquals('cztery tysiące drugi', $f->format(4002));
+        $this->assertEquals('pięciotysięczny', $f->format(5000));
 
         $this->assertEquals('dziesięciotysięczny', $f->format(10000));
+        $this->assertEquals('dwanaście tysięcy sto czwarty', $f->format(12104));
+        $this->assertEquals('dwadzieścia osiem tysięcy trzysta trzydziesty trzeci', $f->format(28333));
+        $this->assertEquals('trzydzieści tysięcy setny', $f->format(30100));
+
+        $this->assertEquals('stutysięczny', $f->format(100000));
+        $this->assertEquals('sto tysięcy drugi', $f->format(100002));
+
+        $this->assertEquals('trzymilionowy', $f->format(3000000));
+        $this->assertEquals('cztery miliony pięścet piećdziesięciotysięczny', $f->format(4550000));
     }
 }
