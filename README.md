@@ -19,7 +19,7 @@ How to
 2. PHP
 -------
 
-Use in code just like [http://php.net/manual/en/class.numberformatter.php](NumberFormatter class).
+Use in code just like [NumberFormatter class](http://php.net/manual/en/class.numberformatter.php).
 
 ```php
 use Arius\NumberFormatter;
