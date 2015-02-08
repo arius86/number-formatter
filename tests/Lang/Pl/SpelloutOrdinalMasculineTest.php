@@ -56,7 +56,19 @@ class SpelloutOrdinalMasculineTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('stutysięczny', $f->format(100000));
         $this->assertEquals('sto tysięcy drugi', $f->format(100002));
 
+        $this->assertEquals('milionowy', $f->format(1000000));
+        $this->assertEquals('milion pięćsettysięczny', $f->format(1500000));
+
         $this->assertEquals('trzymilionowy', $f->format(3000000));
-        $this->assertEquals('cztery miliony pięścet piećdziesięciotysięczny', $f->format(4550000));
+        $this->assertEquals('trzy miliony trzeci', $f->format(3000003));
+        $this->assertEquals('trzy miliony czterystutysięczny', $f->format(3400000));
+        $this->assertEquals('cztery miliony pięćset pięćdziesięciotysięczny', $f->format(4550000));
+        $this->assertEquals('cztery miliony siedemset tysięcy czterechsetny', $f->format(4700400));
+        $this->assertEquals('pięć milionów czterysta trzydzieści osiem tysięcy trzysta dziesiąty', $f->format(5438310));
+
+        $this->assertEquals('pięciomiliardowy', $f->format(5000000000));
+        $this->assertEquals('pięć miliardów osiemsetmilionowy', $f->format(5800000000));
+        $this->assertEquals('pięć miliardów osiemset milionów dwustutysięczny', $f->format(5800200000));
+        $this->assertEquals('sześć miliardów dziewięćset pięćdziesięcio jednomilionowy', $f->format(6951000000));
     }
 }

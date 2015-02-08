@@ -50,7 +50,7 @@ class SpelloutOrdinal implements SpelloutInterface
     );
 
     protected $complex = array(
-        1 => "",
+        1 => "jedno",
         2 => "dwu",
         3 => "trzy",
         4 => "cztero",
@@ -72,28 +72,28 @@ class SpelloutOrdinal implements SpelloutInterface
         20 => "dwudziesto",
         30 => "trzydziesto",
         40 => "czterdziesto",
-        50 => "pięcdziesięcio",
+        50 => "pięćdziesięcio",
         60 => "sześćdziesięcio",
         70 => "siedemdziesięcio",
         80 => "osiemdziesięcio",
         90 => "dziewięćdziesięcio",
-        100 => "stu"
+        100 => "stu",
+        200 => "dwustu",
+        300 => "trzystu",
+        400 => "czterystu",
+        500 => "pięćset",
+        600 => "sześćset",
+        700 => "siedemset",
+        800 => "osiemset",
+        900 => "dziewięćset"
     );
 
     protected $zeroes = array(
         2 => "setne",
         3 => "tysięczne",
-        4 => "tysięczne",
-        5 => "tysięczne",
         6 => "milionowe",
-        7 => "milionowe",
-        8 => "milionowe",
         9 => "miliardowe",
-        10 => "miliardowe",
-        11 => "miliardowe",
         12 => "bilionowe",
-        13 => "bilionowe",
-        14 => "bilionowe"
     );
 
     protected $hundredsPrefixes = array(
@@ -110,6 +110,9 @@ class SpelloutOrdinal implements SpelloutInterface
 
     protected $cardinal;
     protected $complexSuffix = '';
+    protected $complexity = 0;
+
+    protected $debugNum;
 
     /**
      * @inheritdoc
@@ -117,6 +120,7 @@ class SpelloutOrdinal implements SpelloutInterface
     public function format($number)
     {
         $this->complexSuffix = '';
+        $this->complexity = 0;
         $this->cardinal = explode(' ', $this->getCardinal($number));
 
         return $this->prepare($number);
@@ -124,52 +128,27 @@ class SpelloutOrdinal implements SpelloutInterface
 
     private function prepare($number)
     {
+        $this->debugNum = $number;
+
+
         if ($number < 20) {
             return $this->simple[$number];
         }
 
         $numberLength = strlen($number);
-        $ordinal = array();
 
-        $multiplier = 1;
-        $zeroesNb = 0;
-
-        // try to get last two digits
-        $lastTwoDigits = substr($number, -2, 2);
-
-        if (isset($this->simple[$lastTwoDigits])) {
-            $ordinal[] = $this->simple[$lastTwoDigits];
-        } else {
-            // something more complex
-            for ($i=1; $i <= $numberLength; $i++) {
-                $digit = substr($number, -$i, 1);
-
-                if ($digit) {
-                    if (isset($this->simple[$digit*$multiplier])) {
-                        $ordinal[] = $this->simple[$digit*$multiplier];
-                    } elseif ($zeroesNb == 2) {
-                        $ordinal[] = $this->hundredsPrefixes[$digit].$this->zeroes[$zeroesNb];
-                        break;
-                    } elseif ($zeroesNb > 2) {
-                        $this->complexSuffix = $this->zeroes[$zeroesNb];
-                        $number = substr($number, 0, -3);
-                        $ordinal = array_merge($ordinal, $this->prepareComplex($number));
-                        break;
-                    }
-                } elseif (!count($ordinal)) {
-                    $zeroesNb++;
-                }
-
-                $multiplier *= 10;
-            }
-        }
-
+        $ordinal = $this->prepareComplex($number);
         $cardinal = $this->cardinal;
 
-        if ($this->complexSuffix !== '' || ($numberLength > 3 && $cardinal[0] === 'jeden')) {
+        if ($numberLength > 3 && $cardinal[0] === 'jeden') {
             unset($cardinal[0]);
-            $cardinal = array_values($cardinal);
         }
+
+        if ($this->complexSuffix !== '') {
+            unset($cardinal[count($cardinal)-1]);
+        }
+
+        $cardinal = array_values($cardinal);
 
         foreach ($ordinal As $key => $word) {
             $cardinal[count($cardinal)-($key+1)] = $word;
@@ -180,22 +159,63 @@ class SpelloutOrdinal implements SpelloutInterface
         return implode(' ', $ordinal);
     }
 
-    private function prepareComplex($number)
+    private function prepareComplex($number, $mode = 'simple')
     {
+        if ($this->complexity) {
+            $number = substr($number, 0, ($this->complexity*-1));
+        }
+
+        if ($number == 1) {
+            return array($this->complexSuffix);
+        }
+
         if ($number < 20) {
             return array($this->complex[$number].$this->complexSuffix);
         }
 
+        // try to get last two digits
+        $modeArray = $this->$mode;
+        $lastTwoDigits = substr($number, -2, 2);
+
+        if (isset($this->simple[$lastTwoDigits])) {
+            $ordinal = array($modeArray[$lastTwoDigits].$this->complexSuffix);
+        } else {
+            $ordinal = $this->loopByDigits($number, $mode);
+        }
+
+        return $ordinal;
+    }
+
+    private function loopByDigits($number, $mode = 'simple')
+    {
+        $modeArray = $this->$mode;
         $numberLength = strlen($number);
         $ordinal = array();
-
         $multiplier = 1;
+        $zeroesNb = 0;
 
         for ($i=1; $i <= $numberLength; $i++) {
             $digit = substr($number, -$i, 1);
-            if ($digit && isset($this->complex[$digit*$multiplier])) {
-                $ordinal[] = $this->complex[$digit*$multiplier].(!count($ordinal) ? $this->complexSuffix : '');
+
+            if ($digit) {
+                if (isset($modeArray[$digit*$multiplier])) {
+                    $ordinal[] = $modeArray[$digit*$multiplier].(count($ordinal) ? '' : $this->complexSuffix);
+                } elseif ($zeroesNb == 2) {
+                    $ordinal[] = $this->hundredsPrefixes[$digit].$this->zeroes[$zeroesNb];
+                    break;
+                } elseif ($zeroesNb > 2) {
+                    $complexity = floor($zeroesNb/3)*3;
+
+                    $this->complexSuffix = $this->zeroes[$complexity];
+                    $this->complexity = $complexity;
+
+                    $ordinal = $this->prepareComplex($number, 'complex');
+                    break;
+                }
+            } elseif (!count($ordinal) && $mode == 'simple') {
+                $zeroesNb++;
             }
+
             $multiplier *= 10;
         }
 
