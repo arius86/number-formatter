@@ -25,7 +25,7 @@ trait SpelloutTrait
 
     protected function getCardinal($number)
     {
-        $this->formatter->setTextAttribute(NumberFormatter::DEFAULT_RULESET, '%spellout-cardinal');
+        $this->formatter->setTextAttribute(NumberFormatter::DEFAULT_RULESET, '%spellout-cardinal-masculine');
         return $this->formatter->format($number);
     }
 }
