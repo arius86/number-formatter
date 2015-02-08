@@ -13,14 +13,14 @@ namespace Arius\Tests\Lang\Pl;
 
 use Arius\NumberFormatter;
 
-class SpelloutOrdinalFemineTest extends \PHPUnit_Framework_TestCase
+class SpelloutOrdinalFeminineTest extends \PHPUnit_Framework_TestCase
 {
     protected $formatter;
 
     protected function setUp()
     {
         $this->formatter = new NumberFormatter('pl', NumberFormatter::SPELLOUT);
-        $this->formatter->setTextAttribute(NumberFormatter::DEFAULT_RULESET, "%spellout-ordinal-femine");
+        $this->formatter->setTextAttribute(NumberFormatter::DEFAULT_RULESET, "%spellout-ordinal-feminine");
     }
 
     public function testDigits()

@@ -121,9 +121,27 @@ class SpelloutOrdinal implements SpelloutInterface
     {
         $this->complexSuffix = '';
         $this->complexity = 0;
-        $this->cardinal = explode(' ', $this->getCardinal($number));
-
+        $this->cardinal = $this->getCardinalArray($number);
+        $this->cardinal[0] = $this->fixFeminineCardinal($this->cardinal[0]);
+        
         return $this->prepare($number);
+    }
+
+    /**
+     * Due to different versions of ICU available, we need to fix first word from complex cardinal numbers.
+     * Sometimes they may be feminine (and this is incorrect in polish language).
+     *
+     * @param string $number
+     * @return string
+     */
+    protected function fixFeminineCardinal($number)
+    {
+        $feminineToMasculine = [
+            'jedna' => 'jeden',
+            'dwie' => 'dwa'
+        ];
+
+        return isset($feminineToMasculine[$number]) ? $feminineToMasculine[$number] : $number;
     }
 
     private function prepare($number)

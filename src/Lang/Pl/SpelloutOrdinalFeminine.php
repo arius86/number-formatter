@@ -11,7 +11,7 @@
  */
 namespace Arius\Lang\Pl;
 
-class SpelloutOrdinalFemine extends SpelloutOrdinal
+class SpelloutOrdinalFeminine extends SpelloutOrdinal
 {
     protected $simple = [
         0 => "zerowa",

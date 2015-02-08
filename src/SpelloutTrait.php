@@ -23,9 +23,17 @@ trait SpelloutTrait
         $this->formatter = clone $formatter;
     }
 
-    protected function getCardinal($number)
+    /**
+     * Get cardinal number as words array.
+     *
+     * @param $number
+     * @return array
+     */
+    protected function getCardinalArray($number)
     {
-        $this->formatter->setTextAttribute(NumberFormatter::DEFAULT_RULESET, '%spellout-cardinal-masculine');
-        return $this->formatter->format($number);
+        $this->formatter->setTextAttribute(NumberFormatter::DEFAULT_RULESET, '%spellout-cardinal');
+        $cardinal = explode(' ', $this->formatter->format($number));
+
+        return $cardinal;
     }
 }
