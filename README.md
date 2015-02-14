@@ -44,5 +44,6 @@ Additional supported ordinals
 - spellout-ordinal
 - spellout-ordinal-feminine
 - spellout-ordinal-masculine
+- spellout-ordinal-neuter
 
 

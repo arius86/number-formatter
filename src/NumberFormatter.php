@@ -65,10 +65,8 @@ class NumberFormatter extends \NumberFormatter
     {
         if ($this->isSpelloutRuleset($attr)) {
             $namespace = $this->getSpelloutNamespace($value);
-
             if (class_exists($namespace)) {
-                $this->spelloutExtender = new $namespace($this);
-                return true;
+                return $this->initializeSpelloutExtender($namespace);
             }
         }
 
@@ -91,6 +89,18 @@ class NumberFormatter extends \NumberFormatter
         }
 
         return $namespace;
+    }
+
+    private function initializeSpelloutExtender($namespace)
+    {
+        $reflectionClass = new \ReflectionClass($namespace);
+
+        if ($reflectionClass->isInstantiable()) {
+            $this->spelloutExtender = new $namespace($this);
+            return true;
+        }
+
+        return false;
     }
 
     /**

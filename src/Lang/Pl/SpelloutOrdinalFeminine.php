@@ -11,7 +11,7 @@
  */
 namespace Arius\Lang\Pl;
 
-class SpelloutOrdinalFeminine extends SpelloutOrdinal
+class SpelloutOrdinalFeminine extends SpelloutOrdinalAbstract
 {
     protected $simple = [
         0 => "zerowa",
@@ -47,16 +47,8 @@ class SpelloutOrdinalFeminine extends SpelloutOrdinal
     protected $zeroes = [
         2 => "setna",
         3 => "tysięczna",
-        4 => "tysięczna",
-        5 => "tysięczna",
         6 => "milionowa",
-        7 => "milionowa",
-        8 => "milionowa",
         9 => "miliardowa",
-        10 => "miliardowa",
-        11 => "miliardowa",
         12 => "bilionowa",
-        13 => "bilionowa",
-        14 => "bilionowa"
     ];
 }

@@ -13,26 +13,19 @@ namespace Arius\Tests\Lang\Pl;
 
 use Arius\NumberFormatter;
 
-class SpelloutOrdinalTest extends \PHPUnit_Framework_TestCase
+class SpelloutOrdinalAbstractTest extends \PHPUnit_Framework_TestCase
 {
     protected $formatter;
 
     protected function setUp()
     {
         $this->formatter = new NumberFormatter('pl', NumberFormatter::SPELLOUT);
-        $this->formatter->setTextAttribute(NumberFormatter::DEFAULT_RULESET, "%spellout-ordinal");
-
-        $this->masculineFormatter = new NumberFormatter('pl', NumberFormatter::SPELLOUT);
-        $this->masculineFormatter->setTextAttribute(NumberFormatter::DEFAULT_RULESET, "%spellout-ordinal-masculine");
+        $this->formatter->setTextAttribute(NumberFormatter::DEFAULT_RULESET, "%spellout-ordinal-abstract");
     }
 
     public function testDigits()
     {
-        $randomNumber = rand(1,100000);
-
-        $this->assertEquals(
-            $this->formatter->format($randomNumber),
-            $this->masculineFormatter->format($randomNumber)
-        );
+        // spellout-ordinal-abstract will be not loaded, cardinal number should be used instead
+        $this->assertEquals('czterdzieści dwa', $this->formatter->format(42));
     }
 }
