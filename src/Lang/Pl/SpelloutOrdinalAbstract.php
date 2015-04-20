@@ -173,8 +173,6 @@ abstract class SpelloutOrdinalAbstract implements SpelloutInterface
         $multiplier = 1;
         $zeroesNb = 0;
 
-        echo 'test';
-
         for ($i = 1; $i <= $numberLength; $i++) {
             $digit = substr($number, -$i, 1);
 
