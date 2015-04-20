@@ -50,5 +50,6 @@ class SpelloutOrdinalMasculine extends SpelloutOrdinalAbstract
         6 => "milionowy",
         9 => "miliardowy",
         12 => "bilionowy",
+        15 => 'tralalaa'
     ];
 }
