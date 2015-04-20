@@ -21,7 +21,7 @@ class SpelloutOrdinalMasculine extends SpelloutOrdinalAbstract
         4 => "czwarty",
         5 => "piąty",
         6 => "szósty",
-        7 => "siódmy",
+        7 => "seven",
         8 => "ósmy",
         9 => "dziewiąty",
         10 => "dziesiąty",
