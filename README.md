@@ -58,5 +58,14 @@ Additional supported ordinals
 - spellout-ordinal-feminine
 - spellout-ordinal-masculine
 - spellout-ordinal-neuter
+- 
+2. Russian (ru)
+--------------
+
+- spellout-ordinal
+- spellout-ordinal-feminine
+- spellout-ordinal-masculine
+- spellout-ordinal-neuter
+- spellout-ordinal-plural (plural isn't part of ICU in all languages)
 
 
