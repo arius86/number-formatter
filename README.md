@@ -58,7 +58,7 @@ Additional supported ordinals
 - spellout-ordinal-feminine
 - spellout-ordinal-masculine
 - spellout-ordinal-neuter
-- 
+ 
 2. Russian (ru)
 --------------
 
