@@ -53,7 +53,7 @@ class SpelloutOrdinalNeuter extends SpelloutOrdinalAbstract
         3 => "тысячное",
         6 => "миллионное",
         9 => "миллиардное",
-        12 => "триллионное",
+        12 => "биллионное",
     ];
 }
 ?>
