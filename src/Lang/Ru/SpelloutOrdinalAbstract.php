@@ -205,4 +205,3 @@ abstract class SpelloutOrdinalAbstract implements SpelloutInterface
         return $ordinal;
     }
 }
-?>

@@ -57,4 +57,3 @@ class SpelloutOrdinalNeuter extends SpelloutOrdinalAbstract
         15 => "квадриллионное",			
     ];
 }
-?>

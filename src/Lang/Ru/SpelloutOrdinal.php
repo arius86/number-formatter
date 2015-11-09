@@ -19,4 +19,3 @@ class SpelloutOrdinal extends SpelloutOrdinalMasculine
 {
 
 }
-?>
