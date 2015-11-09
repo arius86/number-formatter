@@ -54,6 +54,7 @@ class SpelloutOrdinalPlural extends SpelloutOrdinalAbstract
         6 => "миллионные",
         9 => "миллиардные",
         12 => "триллионные",
+        15 => "квадриллионные",			
     ];
 }
 ?>

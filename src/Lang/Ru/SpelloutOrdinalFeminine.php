@@ -54,6 +54,7 @@ class SpelloutOrdinalFeminine extends SpelloutOrdinalAbstract
         6 => "миллионная",
         9 => "миллиардная",
         12 => "триллионная",
+        15 => "квадриллионная",			
     ];
 }
 ?>
