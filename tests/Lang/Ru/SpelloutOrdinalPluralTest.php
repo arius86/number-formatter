@@ -50,7 +50,7 @@ class SpelloutOrdinalPluralTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('две тысячи одиннадцатые', $f->format(2011));
         $this->assertEquals('три тысячи сотые', $f->format(3100));
         $this->assertEquals('четыре тысячи вторые', $f->format(4002));		
-        $this->assertEquals('пятьтысячные', $f->format(5000));
+        $this->assertEquals('пятитысячные', $f->format(5000));
         $this->assertEquals('десятитысячные', $f->format(10000));
         $this->assertEquals('двенадцать тысяч сто четвёртые', $f->format(12104));
         $this->assertEquals('двадцать восемь тысяч триста тридцатые третьи', $f->format(28333));

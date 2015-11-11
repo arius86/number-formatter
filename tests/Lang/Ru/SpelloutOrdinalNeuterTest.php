@@ -50,7 +50,7 @@ class SpelloutOrdinalNeuterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('две тысячи одиннадцатое', $f->format(2011));
         $this->assertEquals('три тысячи сотое', $f->format(3100));
         $this->assertEquals('четыре тысячи второе', $f->format(4002));
-        $this->assertEquals('пятьтысячное', $f->format(5000));
+        $this->assertEquals('пятитысячное', $f->format(5000));
         $this->assertEquals('десятитысячное', $f->format(10000));
         $this->assertEquals('двенадцать тысяч сто четвёртое', $f->format(12104));
         $this->assertEquals('двадцать восемь тысяч триста тридцатое третье', $f->format(28333));

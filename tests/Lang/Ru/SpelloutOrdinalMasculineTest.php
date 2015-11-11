@@ -46,7 +46,7 @@ class SpelloutOrdinalMasculineTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('две тысячи одиннадцатый', $f->format(2011));	
         $this->assertEquals('три тысячи сотый', $f->format(3100));
         $this->assertEquals('четыре тысячи второй', $f->format(4002));
-        $this->assertEquals('пятьтысячный', $f->format(5000));
+        $this->assertEquals('пятитысячный', $f->format(5000));
         $this->assertEquals('десятитысячный', $f->format(10000));
         $this->assertEquals('двенадцать тысяч сто четвёртый', $f->format(12104));
         $this->assertEquals('двадцать восемь тысяч триста тридцатый третий', $f->format(28333));
