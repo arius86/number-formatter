@@ -87,7 +87,7 @@ abstract class SpelloutOrdinalAbstract implements SpelloutInterface
         $this->complexSuffix = '';
         $this->complexity = 0;
         $this->cardinal = $this->getCardinalArray($number);
-        $this->cardinal[0] = $this->fixFeminineCardinal($this->cardinal[0]);
+        $this->cardinal[0] = $this->fixCardinal($this->cardinal[0]);
 
         return $this->prepare($number);
     }
@@ -99,7 +99,7 @@ abstract class SpelloutOrdinalAbstract implements SpelloutInterface
      * @param string $number
      * @return string
      */
-    protected function fixFeminineCardinal($number)
+    protected function fixCardinal($number)
     {
         $feminineToMasculine = [
             'двасти' => 'двести'

@@ -53,7 +53,7 @@ class SpelloutOrdinalFeminineTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('пятитысячная', $f->format(5000));
         $this->assertEquals('десятитысячная', $f->format(10000));
         $this->assertEquals('двенадцать тысяч сто четвёртая', $f->format(12104));
-        $this->assertEquals('двадцать восемь тысяч триста тридцатая третья', $f->format(28333));
+        $this->assertEquals('двадцать восемь тысяч триста тридцать третья', $f->format(28333));
         $this->assertEquals('тридцать тысяч сотая', $f->format(30100));
 
         $this->assertEquals('стотысячная', $f->format(100000));
@@ -64,14 +64,14 @@ class SpelloutOrdinalFeminineTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('трёхмиллионная', $f->format(3000000));
         $this->assertEquals('три миллионы третья', $f->format(3000003));
-        $this->assertEquals('три миллионы четыреста тысячная', $f->format(3400000));
-        $this->assertEquals('четыре миллионы пятьсот пятьдесяттысячная', $f->format(4550000));
-        $this->assertEquals('cчетыре миллионы семьсот тысяч четырёхсотая', $f->format(4700400));
+        $this->assertEquals('три миллионы четырёхсотыйтысячная', $f->format(3400000));
+        $this->assertEquals('четыре миллионы пятьсот пятидесятитысячная', $f->format(4550000));
+        $this->assertEquals('четыре миллионы семьсот тысяч четырёхсотая', $f->format(4700400));
         $this->assertEquals('пять миллионов четыреста тридцать восемь тысяч триста десятая', $f->format(5438310));
 
         $this->assertEquals('пятимиллиардная', $f->format(5000000000));
-        $this->assertEquals('пять миллиардов восемьсотмиллионная', $f->format(5800000000));
-        $this->assertEquals('пять миллиардов восемьсот миллионов двеститысячна', $f->format(5800200000));
+        $this->assertEquals('пять миллиардов восьмисотыймиллионная', $f->format(5800000000));
+        $this->assertEquals('пять миллиардов восемьсот миллионов двухсотыйтысячная', $f->format(5800200000));
         $this->assertEquals('шесть миллиардов девятьсот пятьдесят миллионная', $f->format(6951000000));
     }
 }

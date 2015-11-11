@@ -41,7 +41,7 @@ class SpelloutOrdinalPluralTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('сотые', $f->format(100));
         $this->assertEquals('сто вторые', $f->format(102));
-        $this->assertEquals('двасти тридцатые четвёртые', $f->format(234));
+        $this->assertEquals('двести тридцать четвёртые', $f->format(234));
         $this->assertEquals('трёхсотые', $f->format(300));
         $this->assertEquals('восемьсот двадцатые', $f->format(820));
 
@@ -53,7 +53,7 @@ class SpelloutOrdinalPluralTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('пятитысячные', $f->format(5000));
         $this->assertEquals('десятитысячные', $f->format(10000));
         $this->assertEquals('двенадцать тысяч сто четвёртые', $f->format(12104));
-        $this->assertEquals('двадцать восемь тысяч триста тридцатые третьи', $f->format(28333));
+        $this->assertEquals('двадцать восемь тысяч триста тридцать третьи', $f->format(28333));
         $this->assertEquals('тридцать тысяч сотые', $f->format(30100));
 
         $this->assertEquals('стотысячные', $f->format(100000));
@@ -62,16 +62,16 @@ class SpelloutOrdinalPluralTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('миллионные', $f->format(1000000));
         $this->assertEquals('миллион пятисотыйтысячные', $f->format(1500000));
 
-        $this->assertEquals('три миллионные', $f->format(3000000));// 'три' is missing
+        $this->assertEquals('трёхмиллионные', $f->format(3000000));// 'три' is missing
         $this->assertEquals('три миллионы третьи', $f->format(3000003));
-        $this->assertEquals('три миллионы четырестатысячные', $f->format(3400000));
-        $this->assertEquals('четыре миллионы пятьсот пятьдесяттысячные', $f->format(4550000));
+        $this->assertEquals('три миллионы четырёхсотыйтысячные', $f->format(3400000));
+        $this->assertEquals('четыре миллионы пятьсот пятидесятитысячные', $f->format(4550000));
         $this->assertEquals('четыре миллионы семьсот тысяч четырёхсотые', $f->format(4700400));
         $this->assertEquals('пять миллионов четыреста тридцать восемь тысяч триста десятые', $f->format(5438310));
 
         $this->assertEquals('пятимиллиардные', $f->format(5000000000));
-        $this->assertEquals('пять миллиардов восемьсотмиллионные', $f->format(5800000000));
-        $this->assertEquals('пять миллиардов восемьсот миллионов двеститысячные', $f->format(5800200000));
+        $this->assertEquals('пять миллиардов восьмисотыймиллионные', $f->format(5800000000));
+        $this->assertEquals('пять миллиардов восемьсот миллионов двухсотыйтысячные', $f->format(5800200000));
         $this->assertEquals('шесть миллиардов девятьсот пятьдесят миллионные', $f->format(6951000000));
     }
 }
