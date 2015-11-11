@@ -60,7 +60,7 @@ class SpelloutOrdinalFeminineTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('сто тысяч вторая', $f->format(100002));
 
         $this->assertEquals('миллионная', $f->format(1000000));
-        $this->assertEquals('миллион пятьсоттысячная', $f->format(1500000));
+        $this->assertEquals('миллион пятисотыйтысячная', $f->format(1500000));
 
         $this->assertEquals('трёхмиллионная', $f->format(3000000));
         $this->assertEquals('три миллионы третья', $f->format(3000003));
