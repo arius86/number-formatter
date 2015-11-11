@@ -6,10 +6,14 @@
  * @copyright Arius IT Arkadiusz Ostrycharz
  * @homepage http://arius.pl
  *
+ * Russian Version:
+ * @copyright Grigorij Kosba 
+ * @homepage http://www.lern-online.net
+ *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Arius\Lang\Pl;
+namespace Arius\Lang\Ru;
 
 use Arius\SpelloutInterface;
 use Arius\SpelloutTrait;
@@ -19,54 +23,54 @@ abstract class SpelloutOrdinalAbstract implements SpelloutInterface
     use SpelloutTrait;
 
     protected $complex = [
-        1 => "jedno",
-        2 => "dwu",
-        3 => "trzy",
-        4 => "cztero",
-        5 => "pięcio",
-        6 => "sześcio",
-        7 => "siedmio",
-        8 => "ośmio",
-        9 => "dziewięcio",
-        10 => "dziesięcio",
-        11 => "jedenasto",
-        12 => "dwunasto",
-        13 => "trzynasto",
-        14 => "czternasto",
-        15 => "piętnasto",
-        16 => "szesnasto",
-        17 => "siedemnasto",
-        18 => "osiemnasto",
-        19 => "dziewiętnasto",
-        20 => "dwudziesto",
-        30 => "trzydziesto",
-        40 => "czterdziesto",
-        50 => "pięćdziesięcio",
-        60 => "sześćdziesięcio",
-        70 => "siedemdziesięcio",
-        80 => "osiemdziesięcio",
-        90 => "dziewięćdziesięcio",
-        100 => "stu",
-        200 => "dwustu",
-        300 => "trzystu",
-        400 => "czterystu",
-        500 => "pięćset",
-        600 => "sześćset",
-        700 => "siedemset",
-        800 => "osiemset",
-        900 => "dziewięćset"
+        1 => "",
+        2 => "двух", 	
+        3 => "трёх",	
+        4 => "четырёх",	
+        5 => "пяти",	
+        6 => "шести",	
+        7 => "семи",	
+        8 => "восьми",	
+        9 => "девяти",	
+        10 => "десяти", 			
+        11 => "одиннадцати", 	
+        12 => "двенадцати",		
+        13 => "тринадцати",		
+        14 => "четырнадцати",	
+        15 => "пятнадцати", 	
+        16 => "шестнадцати",	
+        17 => "семнадцати",		
+        18 => "восемнадцати",	
+        19 => "девятнадцати",	
+        20 => "двадцати",
+        30 => "тридцати",
+        40 => "сороковой", 
+        50 => "пятидесяти",
+        60 => "шестидесяти",
+        70 => "семидесяти",
+        80 => "восмидесяти",
+        90 => "девиностй",
+        100 => "сто",
+        200 => "двухсотый",
+        300 => "трёхсотый",
+        400 => "четырёхсотый",
+        500 => "пятисотый",
+        600 => "шестисотый",
+        700 => "семисотый",
+        800 => "восьмисотый",
+        900 => "девятисотый"
     ];
 
     protected $hundredsPrefixes = [
         1 => "",
-        2 => "dwu",
-        3 => "trzech",
-        4 => "czterech",
-        5 => "pięć",
-        6 => "sześć",
-        7 => "siedem",
-        8 => "osiem",
-        9 => "dziewięć"
+        2 => "двух",
+        3 => "трёх",
+        4 => "четырёх",
+        5 => "пяти",
+        6 => "шести",
+        7 => "семи",
+        8 => "восьми",
+        9 => "девяти"
     ];
 
     protected $cardinal;
@@ -83,23 +87,22 @@ abstract class SpelloutOrdinalAbstract implements SpelloutInterface
         $this->complexSuffix = '';
         $this->complexity = 0;
         $this->cardinal = $this->getCardinalArray($number);
-        $this->cardinal[0] = $this->fixFeminineCardinal($this->cardinal[0]);
+        $this->cardinal[0] = $this->fixCardinal($this->cardinal[0]);
 
         return $this->prepare($number);
     }
 
     /**
      * Due the different versions of ICU available, we need to fix first word from complex cardinal numbers.
-     * Sometimes they may be feminine (and this is incorrect in polish language).
+     * Sometimes they may be feminine (and this is incorrect in russian language).
      *
      * @param string $number
      * @return string
      */
-    protected function fixFeminineCardinal($number)
+    protected function fixCardinal($number)
     {
         $feminineToMasculine = [
-            'jedna' => 'jeden',
-            'dwie' => 'dwa'
+            'двасти' => 'двести'
         ];
 
         return isset($feminineToMasculine[$number]) ? $feminineToMasculine[$number] : $number;
@@ -119,7 +122,7 @@ abstract class SpelloutOrdinalAbstract implements SpelloutInterface
         $ordinal = $this->prepareComplex($number);
         $cardinal = $this->cardinal;
 
-        if ($numberLength > 3 && $cardinal[0] === 'jeden') {
+        if ($numberLength > 3 && in_array($cardinal[0], ['один', 'одна'])) {
             unset($cardinal[0]);
         }
 
@@ -174,6 +177,10 @@ abstract class SpelloutOrdinalAbstract implements SpelloutInterface
         $zeroesNb = 0;
 
         for ($i = 1; $i <= $numberLength; $i++) {
+            if (count($ordinal)) {
+                break;
+            }
+
             $digit = substr($number, -$i, 1);
 
             if ($digit) {
@@ -191,7 +198,7 @@ abstract class SpelloutOrdinalAbstract implements SpelloutInterface
                     $ordinal = $this->prepareComplex($number, 'complex');
                     break;
                 }
-            } elseif (!count($ordinal) && $mode == 'simple') {
+            } elseif ($mode == 'simple') {
                 $zeroesNb++;
             }
 
