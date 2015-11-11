@@ -7,19 +7,6 @@ PHP NumberFormatter extended with additional ordinals not supported by ICU.
 
 **Feel free to add more languages. Fork, pull request and contribute!**
 
-Number generator from Lern-Online.net
-======
-You can prove or check the values in my number generator.
-Put a number with max 15 characters in the input box and the script will generate with AJAX immediately the numeral of the inserted number.
-
-1. polish ordinal numerals (and cardinal numbers from ICU)
-----------------------------
-http://www.lern-online.net/polnisch/schreiben/zahlen/zahlengenerator/
-
-2. russian ordinal numerals (and cardinal numbers from ICU)
-----------------------------
-http://www.lern-online.net/russisch/schreiben/zahlen/zahlengenerator/
-
 How to
 ======
 
