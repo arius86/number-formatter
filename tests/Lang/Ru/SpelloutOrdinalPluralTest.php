@@ -39,7 +39,7 @@ class SpelloutOrdinalPluralTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('двадцать первые', $f->format(21));// 20 should use cardinal numeral
         $this->assertEquals('восьмидесятые', $f->format(80));
 
-        $this->assertEquals('setne', $f->format(100));
+        $this->assertEquals('сотые', $f->format(100));
         $this->assertEquals('сто вторые', $f->format(102));
         $this->assertEquals('двасти тридцатые четвёртые', $f->format(234));
         $this->assertEquals('трёхсотые', $f->format(300));

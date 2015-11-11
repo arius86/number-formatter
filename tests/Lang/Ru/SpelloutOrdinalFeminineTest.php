@@ -36,12 +36,12 @@ class SpelloutOrdinalFeminineTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('вторая', $f->format(2));
 
         $this->assertEquals('одиннадцатая', $f->format(11));
-        $this->assertEquals('двадцать первая', $f->format(21));// 20 should use cardinal numeral
+        $this->assertEquals('двадцать первая', $f->format(21));
         $this->assertEquals('восьмидесятая', $f->format(80));
 
         $this->assertEquals('сотая', $f->format(100));
         $this->assertEquals('сто вторая', $f->format(102));
-        $this->assertEquals('двасти тридцатая четвёртая', $f->format(234));
+        $this->assertEquals('двести тридцать четвёртая', $f->format(234));
         $this->assertEquals('трёхсотая', $f->format(300));
         $this->assertEquals('восемьсот двадцатая', $f->format(820));
 

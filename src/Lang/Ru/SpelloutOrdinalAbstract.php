@@ -51,14 +51,14 @@ abstract class SpelloutOrdinalAbstract implements SpelloutInterface
         80 => "восмидесяти",
         90 => "девиностй",
         100 => "сто",
-        200 => "двухсотый", 	// $hundredsPrefixes[2] + $zeroes[2] 
-        300 => "трёхсотый",	// $hundredsPrefixes[3] + $zeroes[2] 
-        400 => "четырёхсотый",	// $hundredsPrefixes[4] + $zeroes[2] 
-        500 => "пятисотый",	// $hundredsPrefixes[5] + $zeroes[2] 
-        600 => "шестисотый",	// $hundredsPrefixes[6] + $zeroes[2] 
-        700 => "семисотый",	// $hundredsPrefixes[7] + $zeroes[2] 
-        800 => "восьмисотый",	// $hundredsPrefixes[8] + $zeroes[2] 
-        900 => "девятисотый",  	// $hundredsPrefixes[9] + $zeroes[2]       
+        200 => "двухсотый",
+        300 => "трёхсотый",
+        400 => "четырёхсотый",
+        500 => "пятисотый",
+        600 => "шестисотый",
+        700 => "семисотый",
+        800 => "восьмисотый",
+        900 => "девятисотый"
     ];
 
     protected $hundredsPrefixes = [
@@ -102,8 +102,7 @@ abstract class SpelloutOrdinalAbstract implements SpelloutInterface
     protected function fixFeminineCardinal($number)
     {
         $feminineToMasculine = [
-            'одна' => 'один',
-            'два' => 'две'
+            'двасти' => 'двести'
         ];
 
         return isset($feminineToMasculine[$number]) ? $feminineToMasculine[$number] : $number;
@@ -123,7 +122,7 @@ abstract class SpelloutOrdinalAbstract implements SpelloutInterface
         $ordinal = $this->prepareComplex($number);
         $cardinal = $this->cardinal;
 
-        if ($numberLength > 3 && $cardinal[0] === 'один') {
+        if ($numberLength > 3 && in_array($cardinal[0], ['один', 'одна'])) {
             unset($cardinal[0]);
         }
 
@@ -178,6 +177,10 @@ abstract class SpelloutOrdinalAbstract implements SpelloutInterface
         $zeroesNb = 0;
 
         for ($i = 1; $i <= $numberLength; $i++) {
+            if (count($ordinal)) {
+                break;
+            }
+
             $digit = substr($number, -$i, 1);
 
             if ($digit) {
@@ -195,7 +198,7 @@ abstract class SpelloutOrdinalAbstract implements SpelloutInterface
                     $ordinal = $this->prepareComplex($number, 'complex');
                     break;
                 }
-            } elseif (!count($ordinal) && $mode == 'simple') {
+            } elseif ($mode == 'simple') {
                 $zeroesNb++;
             }
 
